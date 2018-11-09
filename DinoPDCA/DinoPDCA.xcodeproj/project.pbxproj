@@ -1,0 +1,376 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C126AB3620735B21002A8FF3 /* libInstantPudding.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C126AB3420735B21002A8FF3 /* libInstantPudding.dylib */; };
+		C126AB3720735B21002A8FF3 /* libIPSFCPost.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C126AB3520735B21002A8FF3 /* libIPSFCPost.dylib */; };
+		C1B51111206E1FE200AF2E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B51110206E1FE200AF2E51 /* AppDelegate.m */; };
+		C1B51114206E1FE200AF2E51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B51113206E1FE200AF2E51 /* ViewController.m */; };
+		C1B51116206E1FE200AF2E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1B51115206E1FE200AF2E51 /* Assets.xcassets */; };
+		C1B51119206E1FE200AF2E51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1B51117206E1FE200AF2E51 /* Main.storyboard */; };
+		C1B5111C206E1FE200AF2E51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B5111B206E1FE200AF2E51 /* main.m */; };
+		C1B51129206E227C00AF2E51 /* control.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B51128206E227C00AF2E51 /* control.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C126AB3320735A87002A8FF3 /* DinoPDCA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinoPDCA.entitlements; sourceTree = "<group>"; };
+		C126AB3420735B21002A8FF3 /* libInstantPudding.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libInstantPudding.dylib; sourceTree = "<group>"; };
+		C126AB3520735B21002A8FF3 /* libIPSFCPost.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libIPSFCPost.dylib; sourceTree = "<group>"; };
+		C1B5110C206E1FE200AF2E51 /* DinoPDCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinoPDCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1B5110F206E1FE200AF2E51 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C1B51110206E1FE200AF2E51 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C1B51112206E1FE200AF2E51 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C1B51113206E1FE200AF2E51 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C1B51115206E1FE200AF2E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1B51118206E1FE200AF2E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1B5111A206E1FE200AF2E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1B5111B206E1FE200AF2E51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C1B51127206E227C00AF2E51 /* control.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = control.h; sourceTree = "<group>"; };
+		C1B51128206E227C00AF2E51 /* control.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = control.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C1B51109206E1FE200AF2E51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C126AB3720735B21002A8FF3 /* libIPSFCPost.dylib in Frameworks */,
+				C126AB3620735B21002A8FF3 /* libInstantPudding.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C1B51103206E1FE200AF2E51 = {
+			isa = PBXGroup;
+			children = (
+				C1B5110E206E1FE200AF2E51 /* DinoPDCA */,
+				C1B5112A206E229B00AF2E51 /* View */,
+				C1B5112B206E22A300AF2E51 /* Model */,
+				C1B51126206E224C00AF2E51 /* Control */,
+				C1B5110D206E1FE200AF2E51 /* Products */,
+				C1B51123206E20C400AF2E51 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C1B5110D206E1FE200AF2E51 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1B5110C206E1FE200AF2E51 /* DinoPDCA.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C1B5110E206E1FE200AF2E51 /* DinoPDCA */ = {
+			isa = PBXGroup;
+			children = (
+				C1B5110F206E1FE200AF2E51 /* AppDelegate.h */,
+				C1B51110206E1FE200AF2E51 /* AppDelegate.m */,
+				C1B51115206E1FE200AF2E51 /* Assets.xcassets */,
+				C1B51117206E1FE200AF2E51 /* Main.storyboard */,
+				C1B5111A206E1FE200AF2E51 /* Info.plist */,
+				C1B5111B206E1FE200AF2E51 /* main.m */,
+				C126AB3320735A87002A8FF3 /* DinoPDCA.entitlements */,
+			);
+			path = DinoPDCA;
+			sourceTree = "<group>";
+		};
+		C1B51123206E20C400AF2E51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C126AB3420735B21002A8FF3 /* libInstantPudding.dylib */,
+				C126AB3520735B21002A8FF3 /* libIPSFCPost.dylib */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1B51126206E224C00AF2E51 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				C1B51127206E227C00AF2E51 /* control.h */,
+				C1B51128206E227C00AF2E51 /* control.m */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		C1B5112A206E229B00AF2E51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1B51112206E1FE200AF2E51 /* ViewController.h */,
+				C1B51113206E1FE200AF2E51 /* ViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C1B5112B206E22A300AF2E51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C1B5110B206E1FE200AF2E51 /* DinoPDCA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1B51120206E1FE200AF2E51 /* Build configuration list for PBXNativeTarget "DinoPDCA" */;
+			buildPhases = (
+				C1B51108206E1FE200AF2E51 /* Sources */,
+				C1B51109206E1FE200AF2E51 /* Frameworks */,
+				C1B5110A206E1FE200AF2E51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DinoPDCA;
+			productName = DinoPDCA;
+			productReference = C1B5110C206E1FE200AF2E51 /* DinoPDCA.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C1B51104206E1FE200AF2E51 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Allen;
+				TargetAttributes = {
+					C1B5110B206E1FE200AF2E51 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C1B51107206E1FE200AF2E51 /* Build configuration list for PBXProject "DinoPDCA" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C1B51103206E1FE200AF2E51;
+			productRefGroup = C1B5110D206E1FE200AF2E51 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C1B5110B206E1FE200AF2E51 /* DinoPDCA */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C1B5110A206E1FE200AF2E51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1B51116206E1FE200AF2E51 /* Assets.xcassets in Resources */,
+				C1B51119206E1FE200AF2E51 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C1B51108206E1FE200AF2E51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1B51114206E1FE200AF2E51 /* ViewController.m in Sources */,
+				C1B51129206E227C00AF2E51 /* control.m in Sources */,
+				C1B5111C206E1FE200AF2E51 /* main.m in Sources */,
+				C1B51111206E1FE200AF2E51 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C1B51117206E1FE200AF2E51 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1B51118206E1FE200AF2E51 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C1B5111E206E1FE200AF2E51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C1B5111F206E1FE200AF2E51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C1B51121206E1FE200AF2E51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DinoPDCA/DinoPDCA.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DinoPDCA/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DinoPDCA",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = Allen.com.DinoPDCA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C1B51122206E1FE200AF2E51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DinoPDCA/DinoPDCA.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DinoPDCA/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DinoPDCA",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = Allen.com.DinoPDCA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C1B51107206E1FE200AF2E51 /* Build configuration list for PBXProject "DinoPDCA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1B5111E206E1FE200AF2E51 /* Debug */,
+				C1B5111F206E1FE200AF2E51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1B51120206E1FE200AF2E51 /* Build configuration list for PBXNativeTarget "DinoPDCA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1B51121206E1FE200AF2E51 /* Debug */,
+				C1B51122206E1FE200AF2E51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C1B51104206E1FE200AF2E51 /* Project object */;
+}

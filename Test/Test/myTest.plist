@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>N131</key>
+	<dict>
+		<key>BoardID</key>
+		<dict>
+			<key>N131B</key>
+			<dict>
+				<key>0x08</key>
+				<string>N1312132</string>
+			</dict>
+			<key>N141B</key>
+			<dict>
+				<key>0x0C</key>
+				<string>N14112341234</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

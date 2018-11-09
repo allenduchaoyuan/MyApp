@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>sourceDirectory</key>
+	<string>/</string>
+	<key>StationName</key>
+	<string>SA-FLEX1</string>
+	<key>AppName</key>
+	<string>Transformers</string>
+	<key>AppVersion</key>
+	<string>V711.117.0004</string>
+	<key>PathOfReadFile</key>
+	<string>/vault/FPUP/read/</string>
+	<key>PathOfSaveFile</key>
+	<string>/vault/FPUP/parse/</string>
+	<key>PathOfBackupsFile</key>
+	<string>/vault/FPUP/backups/</string>
+	<key>PathOfReportFile</key>
+	<string>/vault/FPUP/report/</string>
+	<key>PathOfDocument</key>
+	<string>/vault/FPUP/report/transformers/</string>
+	<key>CommandOfMount</key>
+	<string>mount -t smbfs //guest:@</string>
+	<key>IPAddress</key>
+	<string>192.168.0.1</string>
+</dict>
+</plist>

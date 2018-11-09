@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StationName</key>
+	<string>Mic</string>
+	<key>AppName</key>
+	<string>UPDCA</string>
+	<key>AppVersion</key>
+	<string>V100.100.1</string>
+	<key>PathOfReadFile</key>
+	<string>/vault/UPDCA/read/</string>
+	<key>PathOfSaveFile</key>
+	<string>/vault/UPDCA/parse/</string>
+	<key>PathOfBackupsFile</key>
+	<string>/vault/UPDCA/backups/</string>
+	<key>PathOfReportFile</key>
+	<string>/vault/UPDCA/report/</string>
+	<key>PathOfDocument</key>
+	<string>/vault/UPDCA/report/document/</string>
+	<key>CommandOfMount</key>
+	<string>mount -t smbfs //guess:@</string>
+	<key>IPAddress</key>
+	<string>192.168.0.1</string>
+	<key>SourceDirectory</key>
+	<string>/PDCA</string>
+</dict>
+</plist>
