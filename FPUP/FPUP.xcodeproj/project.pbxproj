@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F248BB82179F2B1001AC049 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C17FD7451EA5FC640007312C /* ViewController.m */; };
+		9F248BB92179F2B1001AC049 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C17FD7421EA5FC640007312C /* main.m */; };
+		9F248BBA2179F2B1001AC049 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = C17FD7531EA5FC8F0007312C /* Log.m */; };
+		9F248BBB2179F2B1001AC049 /* InstantPuddingWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1651FC81EAED00F00423685 /* InstantPuddingWrapper.m */; };
+		9F248BBC2179F2B1001AC049 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C17FD73F1EA5FC640007312C /* AppDelegate.m */; };
+		9F248BBE2179F2B1001AC049 /* libCBAuth.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1651FCB1EAEE42000423685 /* libCBAuth.dylib */; };
+		9F248BBF2179F2B1001AC049 /* libInstantPudding.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1651FCC1EAEE42000423685 /* libInstantPudding.dylib */; };
+		9F248BC02179F2B1001AC049 /* libIPSFCPost.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1651FCD1EAEE42000423685 /* libIPSFCPost.dylib */; };
+		9F248BC22179F2B1001AC049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C17FD7471EA5FC640007312C /* Assets.xcassets */; };
+		9F248BC32179F2B1001AC049 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C17FD7491EA5FC640007312C /* Main.storyboard */; };
+		9F248BC42179F2B1001AC049 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = C17FD7551EA623DB0007312C /* config.plist */; };
 		C1651FC91EAED00F00423685 /* InstantPuddingWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1651FC81EAED00F00423685 /* InstantPuddingWrapper.m */; };
 		C1651FCE1EAEE42000423685 /* libCBAuth.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1651FCB1EAEE42000423685 /* libCBAuth.dylib */; };
 		C1651FCF1EAEE42000423685 /* libInstantPudding.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1651FCC1EAEE42000423685 /* libInstantPudding.dylib */; };
@@ -21,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F248BC82179F2B1001AC049 /* FPUP_ALI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FPUP_ALI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F248BCA2179F339001AC049 /* FPUP_ALI.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FPUP_ALI.plist; sourceTree = "<group>"; };
 		C1651FC61EAED00F00423685 /* InstantPudding_API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstantPudding_API.h; sourceTree = "<group>"; };
 		C1651FC71EAED00F00423685 /* InstantPuddingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstantPuddingWrapper.h; sourceTree = "<group>"; };
 		C1651FC81EAED00F00423685 /* InstantPuddingWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstantPuddingWrapper.m; sourceTree = "<group>"; };
@@ -42,6 +55,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9F248BBD2179F2B1001AC049 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F248BBE2179F2B1001AC049 /* libCBAuth.dylib in Frameworks */,
+				9F248BBF2179F2B1001AC049 /* libInstantPudding.dylib in Frameworks */,
+				9F248BC02179F2B1001AC049 /* libIPSFCPost.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C17FD7381EA5FC640007312C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C17FD73B1EA5FC640007312C /* FPUP.app */,
+				9F248BC82179F2B1001AC049 /* FPUP_ALI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +121,7 @@
 				C17FD7471EA5FC640007312C /* Assets.xcassets */,
 				C17FD7491EA5FC640007312C /* Main.storyboard */,
 				C17FD74C1EA5FC640007312C /* Info.plist */,
+				9F248BCA2179F339001AC049 /* FPUP_ALI.plist */,
 				C17FD7551EA623DB0007312C /* config.plist */,
 				C17FD7411EA5FC640007312C /* Supporting Files */,
 			);
@@ -114,6 +139,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9F248BB62179F2B1001AC049 /* FPUP_ALI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F248BC52179F2B1001AC049 /* Build configuration list for PBXNativeTarget "FPUP_ALI" */;
+			buildPhases = (
+				9F248BB72179F2B1001AC049 /* Sources */,
+				9F248BBD2179F2B1001AC049 /* Frameworks */,
+				9F248BC12179F2B1001AC049 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FPUP_ALI;
+			productName = FPUP;
+			productReference = 9F248BC82179F2B1001AC049 /* FPUP_ALI.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C17FD73A1EA5FC640007312C /* FPUP */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C17FD74F1EA5FC640007312C /* Build configuration list for PBXNativeTarget "FPUP" */;
@@ -137,7 +179,7 @@
 		C17FD7331EA5FC640007312C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Allen_Du;
 				TargetAttributes = {
 					C17FD73A1EA5FC640007312C = {
@@ -160,11 +202,22 @@
 			projectRoot = "";
 			targets = (
 				C17FD73A1EA5FC640007312C /* FPUP */,
+				9F248BB62179F2B1001AC049 /* FPUP_ALI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9F248BC12179F2B1001AC049 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F248BC22179F2B1001AC049 /* Assets.xcassets in Resources */,
+				9F248BC32179F2B1001AC049 /* Main.storyboard in Resources */,
+				9F248BC42179F2B1001AC049 /* config.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C17FD7391EA5FC640007312C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -178,6 +231,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9F248BB72179F2B1001AC049 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F248BB82179F2B1001AC049 /* ViewController.m in Sources */,
+				9F248BB92179F2B1001AC049 /* main.m in Sources */,
+				9F248BBA2179F2B1001AC049 /* Log.m in Sources */,
+				9F248BBB2179F2B1001AC049 /* InstantPuddingWrapper.m in Sources */,
+				9F248BBC2179F2B1001AC049 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C17FD7371EA5FC640007312C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +269,41 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9F248BC62179F2B1001AC049 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					__ALI__,
+				);
+				INFOPLIST_FILE = FPUP/FPUP_ALI.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "allen-du.com.FPUP";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9F248BC72179F2B1001AC049 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					__ALI__,
+				);
+				INFOPLIST_FILE = FPUP/FPUP_ALI.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "allen-du.com.FPUP";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		C17FD74D1EA5FC640007312C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -213,7 +313,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -221,7 +323,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -262,7 +368,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -270,7 +378,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -324,6 +436,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9F248BC52179F2B1001AC049 /* Build configuration list for PBXNativeTarget "FPUP_ALI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F248BC62179F2B1001AC049 /* Debug */,
+				9F248BC72179F2B1001AC049 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C17FD7361EA5FC640007312C /* Build configuration list for PBXProject "FPUP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

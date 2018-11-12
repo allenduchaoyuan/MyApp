@@ -36,7 +36,7 @@
         allItem             = [[NSArray alloc] init];
         allUpper            = [[NSMutableArray alloc] init];
         allLower            = [[NSMutableArray alloc] init];
-        allMeasurement      = [[NSArray alloc] init];
+        allMeasurement      = [[NSMutableArray alloc] init];
         allResultAndPass    = [[NSArray alloc] init];
         allResult           = [[NSMutableArray alloc] init];
         allValue            = [[NSMutableArray alloc] init];
@@ -75,7 +75,7 @@
  */
 -(BOOL) initInformation
 {
-    stationName  = [self readPlist:@"StationName"];
+    stationName  = [self getInfoFromDicJson:@"ghinfo" andJsonInfoSecondLayer:JSON_KEY_STATIONTYPE inJsonPath:JSONPATH];
     appVersion   = [self readPlist:@"AppVersion"];
     appName      = [self readPlist:@"AppName"];
     readPath     = [self readPlist:@"PathOfReadFile"];
@@ -85,6 +85,7 @@
     mountCommand = [self readPlist:@"CommandOfMount"];
     IPAddress    = [self readPlist:@"IPAddress"];
     documentPath = [self readPlist:@"PathOfDocument"];
+    
     
     [self getAppStartDate];
     [self.delegate showInitInformations:stationName version:appVersion];
@@ -154,12 +155,66 @@
             fm = [NSFileManager defaultManager];
             NSDirectoryEnumerator *dirEnum = [[NSDirectoryEnumerator alloc] init];
             dirEnum = [fm enumeratorAtPath:readPath];
+
+#if __ALI__
+            for(fileName in dirEnum)
+            {
+                if(ConnectStatus == 1){
+                    [self writeToDocument:@"Monitor network" decription:@"network disconnected!"];
+                    [self threadCloed];
+                }
+                if([[[fileName componentsSeparatedByString:@"."] lastObject]
+                    isEqualToString:@"zip"]
+                   &&[self monitorFileInUpdateTable:fileName]
+                   &&([[fileName componentsSeparatedByString:@"_"] count] == 2||[[fileName componentsSeparatedByString:@"_"] count] == 3))
+                {
+                    usleep(10000000);
+                    saveCSVFileNamePath = fileName;
+                    if([[fileName componentsSeparatedByString:@"_"] count] == 2)
+                    {
+                        status = [[fileName componentsSeparatedByString:@"_"] firstObject];
+                        sn = [[[[fileName componentsSeparatedByString:@"_"] lastObject] componentsSeparatedByString:@"."] firstObject];
+                    }
+                    if([[fileName componentsSeparatedByString:@"_"] count] == 3)
+                    {
+                        status = [[fileName componentsSeparatedByString:@"_"] firstObject];
+                        sn = [[[[fileName componentsSeparatedByString:@"."] firstObject] componentsSeparatedByString:@"_"] objectAtIndex:1];
+                    }
+                    if([status isEqualToString:@"OK"])
+                    {
+                        status = @"PASS";
+                    }
+                    else
+                    {
+                        status = @"FAIL";
+                    }
+                    [self backupsFile];
+                    sleep(2);
+                    [self backupsFileToParse];
+                    sleep(2);
+                    [self createReportFolder];
+                    [self getPDCAHandle];
+                    [self insertAttribute];
+                    [self insertTestResult:status];
+                    if([self addAndCommitPdca])
+                    {
+                        [self writeUpdateFileToUpdateTable:fileName];
+                    }
+                    [self deleteFileAtReadPath];
+                    [self showToTableView];
+                    
+                }
+
+            }
+#else
             NSInteger snLength;
-            for(fileName in dirEnum){
+            for(fileName in dirEnum)
+            {
                 snLength = [[self Regex:@"([[A-Z]\\d]*)" content:fileName] length];
                 if([[[fileName componentsSeparatedByString:@"."] lastObject]
                     isEqualToString:@"csv"]
-                   && snLength == SNLENGTH) {
+                   && snLength == SNLENGTH
+                   &&[self monitorFileInUpdateTable:fileName]) {
                     if([self readFile] == -1){
                     [self writeToDocument:@"Read buffer" decription:@"buffer is nil!"];
                         continue;
@@ -175,11 +230,15 @@
                     [self getPDCAHandle];
                     [self insertAttribute];
                     [self insertTestItemAndResult];
-                    [self addAndCommitPdca];
+                    if([self addAndCommitPdca])
+                    {
+                        [self writeUpdateFileToUpdateTable:fileName];
+                    }
                     [self deleteFileAtReadPath];
                     [self showToTableView];
                 }
             }
+#endif
         }
     }
 }
@@ -203,6 +262,39 @@
     }
 }
 
+
+- (BOOL)monitorFileInUpdateTable:(NSString *)file_name
+{
+    [self creatDatePath:backupsPath];
+    //NSString * updateFilePath = [backupsPath stringByAppendingFormat:@"%@/%@",datePath,UPDATETABLE];
+    NSString * updateFilePath = [backupsPath stringByAppendingFormat:@"%@",UPDATETABLE];
+    NSFileManager * fm = [NSFileManager defaultManager];
+    if(![fm fileExistsAtPath:updateFilePath])
+    {
+        [fm createFileAtPath:updateFilePath contents:nil attributes:nil];
+    }
+    NSString * contents = [NSString stringWithContentsOfFile:updateFilePath encoding:NSASCIIStringEncoding error:nil];
+    if([contents rangeOfString:file_name].location != NSNotFound)
+    {
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+- (BOOL)writeUpdateFileToUpdateTable:(NSString *)file_name
+{
+    [self creatDatePath:backupsPath];
+    NSFileManager * fm = [NSFileManager defaultManager];
+  //  NSString * update_file = [backupsPath stringByAppendingFormat:@"%@/%@",datePath,UPDATETABLE];
+    NSString * update_file = [backupsPath stringByAppendingFormat:@"%@",UPDATETABLE];
+    if(![fm fileExistsAtPath:update_file])
+    {
+        [fm createFileAtPath:update_file contents:nil attributes:nil];
+    }
+    [self writeDataToFile:update_file content:[file_name stringByAppendingString:@"\n"]];
+    return TRUE;
+}
 /*
  Describe : Backupsing file to path of backups
  Input    : NA
@@ -218,6 +310,18 @@
                         stringByAppendingFormat:@"%@/%@",datePath,fileName]
                  error:nil];
     [self writeToDocument:@"Backup file" decription:@"backups file is success!"];
+}
+
+
+- (void)backupsFileToParse
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [self creatDatePath:savePath];
+    [fm copyItemAtPath:[readPath
+                        stringByAppendingPathComponent:fileName]
+                toPath:[savePath
+                        stringByAppendingFormat:@"%@/%@",datePath,fileName]
+                 error:nil];
 }
 
 /*
@@ -251,10 +355,10 @@
     allLower          =   [[[self Regex:@"[[Lowerimt]->\\s,]*(.*)"
                                content:rowBuffer[3]]
                            componentsSeparatedByString:@","] mutableCopy];
-    allMeasurement    =   [[self Regex:@"[[MeasurmntUit]->\\s,]*(.*)"
-                               content:rowBuffer[4]]
-                           componentsSeparatedByString:@","];
-    allResultAndPass  =   [[self Regex:@"\\w*,[\\w-\\s]*,\\w*,[\\w-\\s:]*,(.*)"
+    allMeasurement    =   [[[self Regex:@"[[MeasurmntUit]->\\s,]*(.*)"
+                                content:rowBuffer[4]]
+                            componentsSeparatedByString:@","] mutableCopy];
+    allResultAndPass  =   [[self Regex:@"\\w*,[\\w-\\s]*,\\w*,[\\w\\W]+?,(.*)"
                                content:rowBuffer[5]]
                            componentsSeparatedByString:@","];
     sn                =   [self Regex:@"(\\w*)" content:rowBuffer[5]];
@@ -285,6 +389,7 @@
     for(NSUInteger i = 0;i < count; i++)
     {
         [self separateResultAndValue:i];
+        [self TransformerValueIsNilToNA:i];
         writeContents = [NSString stringWithFormat:@"%lu,%@,%@,%@,%@,%@,%@\n",i+1,allItem[i],allResult[i],allValue[i],allUpper[i],allLower[i],allMeasurement[i]];
         [self writeDataToFile:CSVFileName content:writeContents];
         [self writeToDocument:@"Save file" decription:writeContents];
@@ -340,6 +445,37 @@
     }
 }
 
+/*
+Faction : Insert TestItem for ALI's camera,only insert one result which
+*/
+- (BOOL)insertTestResult:(NSString*)result
+{
+    BOOL resultStatus;
+    if([result isEqualToString:@"PASS"])
+    {
+        result = @"1";
+        resultStatus = true;
+    }
+    else
+    {
+        result = @"0";
+        resultStatus = false;
+    }
+
+    if(IP_insertTestItemAndResult(UID,
+                                  @"RESULT",
+                                  @"1",
+                                  @"1",
+                                  "NA",
+                                  0,
+                                  result,
+                                  @"",
+                                  resultStatus) == -1)
+    {
+        return FALSE;
+    }
+    return TRUE;
+}
 
 /*
  Describe : Insert TestItem and result
@@ -383,7 +519,7 @@
  Input    : NA
  Output   : NA
  */
-- (void)addAndCommitPdca
+- (BOOL)addAndCommitPdca
 {
     bool STATUS;
     if([status isEqualToString:@"PASS"])
@@ -394,11 +530,20 @@
         failCount ++;
     }
     [self writeToReport:@"\n---AddAndCommitPDCA--" decriptions:@"\n"];
+#if __ALI__
+    zipFileName = [backupsPath stringByAppendingFormat:@"%@/%@",datePath,fileName];
+//    zipFileName = [readPath stringByAppendingFormat:@"%@",fileName];
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMdd_HHmmss"];
+    saveCSVFileNamePath = [NSString stringWithFormat:@"%@_%@_%@",status,sn,[dateFormatter stringFromDate:[NSDate date]]];
+#else
     [self compressFile];
+#endif
     if(IP_addFile(UID, zipFileName, saveCSVFileNamePath) == -1)
     {
         [self writeToReport:@"\nAddFile " decriptions:@"fail!\n"];
         [self writeToDocument:@"PDCA" decription:@"add file failed!"];
+        return FALSE;
     }else{
         [self writeToReport:@"\nAddFile " decriptions:@"success!\n"];
         [self writeToDocument:@"PDCA" decription:@"add file sucess!"];
@@ -408,11 +553,13 @@
         [self writeToReport:@"\ncommitData " decriptions:@"fail!\n"];
         [self writeToDocument:@"PDCA" decription:@"commit data failed!"];
         commitedPdcaStatus = @"FAIL";
+        return FALSE;
     }else{
         [self writeToReport:@"\ncommitData " decriptions:@"success!\n"];
         [self writeToDocument:@"PDCA" decription:@"commit data success!"];
         commitedPdcaStatus = @"PASS";
     }
+    return TRUE;
 }
 
 /*
@@ -455,20 +602,50 @@
 }
 
 /*
+Describe : Initing datas for inserting test item and result
+Input    : NA
+Output   : NA
+*/
+- (void)TransformerValueIsNilToNA:(NSUInteger)Count
+{
+    if([allValue[Count] isEqualToString:@" "])
+    {
+        allValue[Count] = @"NA";
+    }
+    if([allValue[Count] rangeOfString:@"V"].location != NSNotFound)
+    {
+        allValue[Count] = [allValue[Count] substringToIndex:[allValue[Count] rangeOfString:@"V"].location];
+    }
+    if([allValue[Count] rangeOfString:@" "].location != NSNotFound)
+    {
+        allValue[Count] = [allValue[Count] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
+    
+    if([allUpper[Count] isEqualToString:@" "])
+    {
+        allUpper[Count] = @"NA";
+    }
+    if([allLower[Count] isEqualToString:@" "])
+    {
+        allLower[Count] = @"NA";
+    }
+    if([allMeasurement[Count] isEqualToString:@" "]||[allMeasurement[Count] isEqualToString:@"-"])
+    {
+        allMeasurement[Count] = @"NA";
+    }
+}
+
+/*
  Describe : Filter value for insert item and result
  Input    : NA
  Output   : NA
  */
 - (NSUInteger)filterValue:(NSUInteger)i
 {
-//    if([[self Regex:@"(x)" content:allValue[i]] isEqualToString:@"x"] || [allValue[i] isEqualToString:@"pass"]){
-//        return -1;
-//    }
-//    return 0;
     NSUInteger flag = 0;
     NSString * validChar = @";";
     
-    if([allValue[i] rangeOfString:@"x"].length != 0)
+    if([allValue[i] rangeOfString:@"x"].length != 0 || [allValue[i] rangeOfString:@"X"].length != 0)
     {
         flag = HEXADECIMAL;
     }
@@ -590,12 +767,33 @@
     [dir createDirectoryAtPath:[basepath stringByAppendingString:datePath] withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
+-(NSString *)getInfoFromDicJson:(NSString *)jsonInfoFirstLayer andJsonInfoSecondLayer:(NSString *)jsonInfoSecondLayer inJsonPath:(NSString *)jsonPath
+{
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    if(![filemgr fileExistsAtPath:jsonPath])
+    {
+        return false;
+    }
+    
+    //read json file, and change to string
+    NSString* json_des = [NSString stringWithContentsOfFile:jsonPath encoding:NSUTF8StringEncoding error:nil];
+    //change string to NSData
+    NSData* aData = [json_des dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary* json_dic = [NSJSONSerialization JSONObjectWithData:aData options:NSJSONReadingMutableContainers error:nil];
+    
+    NSDictionary * jsonInfoFirstLayerDic = [json_dic objectForKey:jsonInfoFirstLayer];
+    
+    NSString * jsonInfoSecLayerTemp = [jsonInfoFirstLayerDic objectForKey:jsonInfoSecondLayer];
+    return jsonInfoSecLayerTemp;
+}
+
 - (void)getAppStartDate
 {
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
     AppStartTime = [dateFormatter stringFromDate:[NSDate date]];
 }
+
 /*
  Describe : Return the amount of items
  Input    : NA
@@ -762,7 +960,7 @@
     [self initIPAddressAndCommand];
     if([self judegeConnectStatus]){
         NSString * Command = [[NSString alloc] init];
-        Command = [mountCommand stringByAppendingFormat:@"%@/pdca %@",IPAddress,readPath];
+        Command = [mountCommand stringByAppendingFormat:@"%@/DropBox %@",IPAddress,readPath];
         system([Command UTF8String]);
         return YES;
     }else{
@@ -773,7 +971,7 @@
 
 - (BOOL) clearFolderOfReadPath
 {
-    NSString * Command = [NSString stringWithFormat:@"mv -f %@*.csv %@",readPath,backupsPath];
+    NSString * Command = [NSString stringWithFormat:@"mv -f %@* %@",readPath,backupsPath];
     system([Command UTF8String]);
     return YES;
 }
@@ -806,7 +1004,7 @@
     [self createDocument];
     [self writeToDocument:@"init information"
                decription:[NSString stringWithFormat:@"stationName:%@\nversion:%@",stationName,appVersion]];
-    if([self mountShareFolder]){
+   if([self mountShareFolder]){
         [self writeToDocument:@"mount share folder" decription:@"mount share folder is success!"];
     }else{
         [self writeToDocument:@"mount share folder" decription:@"mount share folder is Fail!"];
@@ -823,7 +1021,7 @@
     }
     [thread start];
     [self writeToDocument:@"Monitor Folder" decription:@"start monitor folder"];
-    [threadConnect start];
+//    [threadConnect start];
     [self writeToDocument:@"Monitor network status" decription:@"start monitor network status"];
 }
 @end

@@ -6,11 +6,28 @@
 //  Copyright © 2017年 Allen_Du. All rights reserved.
 //
 
+//#ifdef __ALI__
+//#define ALI 1
+//#else
+//#define ALI 0
+//#endif
+
 #import <Foundation/Foundation.h>
 
 #import "InstantPudding_API.h"
 #import "InstantPuddingWrapper.h"
 
+#define JSONPATH @"/vault/data_collection/test_station_config/gh_station_info.json"
+#define JSON_KEY_STATIONTYPE @"STATION_TYPE"
+#define UPDATETABLE @".updateTable.log"
+#define IP_ATTRIBUTE_SERIALNUMBER "serialnumber"
+#define IP_ATTRIBUTE_STATIONSOFTWAREVERSION    "softwareversion"
+#define IP_ATTRIBUTE_STATIONSOFTWARENAME "softwarename"
+
+#define SNLENGTH 17
+
+#define HEXADECIMAL 1
+#define STRING 2
 
 @protocol FPCallbackView <NSObject>
 -(void)showInitInformations:(NSString *)stationName
@@ -67,7 +84,7 @@
     NSArray * allItem;
     NSMutableArray * allUpper;
     NSMutableArray * allLower;
-    NSArray * allMeasurement;
+    NSMutableArray * allMeasurement;
     NSArray * allResultAndPass;
     NSMutableArray * allResult;
     NSMutableArray * allValue;
@@ -92,14 +109,6 @@
     
 }
 
-#define IP_ATTRIBUTE_SERIALNUMBER "serialnumber"
-#define IP_ATTRIBUTE_STATIONSOFTWAREVERSION	"softwareversion"
-#define IP_ATTRIBUTE_STATIONSOFTWARENAME "softwarename"
-
-#define SNLENGTH 17
-
-#define HEXADECIMAL 1
-#define STRING 2
 
 
 @property (weak) id <FPCallbackView> delegate;

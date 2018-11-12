@@ -30,13 +30,13 @@
     [self.view.window setBackgroundColor:[NSColor whiteColor]];
     [self.view.window setTitle:@"FPUP"];
     
-    [_stationNameTitle setFrame:NSMakeRect(20, 53, 110, 35)];
+    [_stationNameTitle setFrame:NSMakeRect(20, 53, 200, 35)];
     [_stationNameTitle setAlignment:NSTextAlignmentJustified];
     [_stationNameTitle setFont:[NSFont fontWithName:@"kaiti SC" size:18]];
     [_stationNameTitle setBordered:NO];
     [_stationNameTitle setEditable:NO];
     
-    [_stationname setFrame:NSMakeRect(133, 53, 110, 35)];
+    [_stationname setFrame:NSMakeRect(134, 56, 211, 33)];
     [_stationname setAlignment:NSTextAlignmentJustified];
     [_stationname setFont:[NSFont fontWithName:@"kaiti SC" size:18]];
     [_stationname setBordered:NO];
